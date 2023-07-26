@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset = "UTF-8">
+       <meta name = "Description" content = "MyDescription">
+       <meta name = "Author" content = "Id, Phonenumber">
+       <meta name = "Keywords" content = "HTML, CSS, BOOTSTRAP, JAVASCRIPT TUTORIALS">
+       <meta name = "Viewport" content = "width=device-width, initial-scale=1.0">
+       <title>Page</title>
+       <style>
+          .div1 {
+              background-color: white;
+              border-radius: 10px; 
+              width: 300px;
+              height: 150px; 
+            }
+            .content {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              top: 150px;
+            }
+            .p-style1 {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: black;
+              font-family: Arial;
+              font-weight: 600;
+            }
+            .div2 {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .input-style1 {
+              padding: 7px 30px;
+              border: 1px solid gray;
+            }
+            .div3 {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 10px;
+            }
+            .button-style1 {
+              color: white;
+              background-color: blue;
+              padding: 10px 54px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              box-shadow: 3px 3px 5px lightgray;
+            }
+            .div4 {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 10px;
+            }
+            .js-p2 {
+                display: none;
+            }
+            @keyframes ani1 {
+                0% {
+                    transform: translateX(0px);
+                    transform: translateY(0px); 
+                }
+                20% {
+                    transform: translateX(-2px);
+                    transform: translateY(-2px); 
+                }
+                40% {
+                    transform: translateX(0px);
+                    transform: translateY(0px); 
+                }
+                60% {
+                    transform: translateX(2px);
+                    transform: translateY(2px); 
+                }
+                80% {
+                    transform: translateX(0px);
+                    transform: translateY(0px); 
+                }
+                100% {
+                    transform: translateX(-2px);
+                    transform: translateY(-2px); 
+                }
+            }
+            .ani {
+                animation-name: ani1;
+                animation-duration: 0.1s;
+                animation-delay: 0s;
+                animation-iteration-count: 1;
+            }
+            body {
+              background-color: black;
+            }
+       </style>
+    </head>
+    <body>
+      <div class = "content">
+          <div class = "div1">
+              <p class = "p-style1">QR CODE GENERATOR</p>
+              <div class = "div2">
+                  <input type = "text" placeholder = "Enter your text or URL" class = "input-style1 js-input1">
+              </div>
+              <div class = "div4">
+                <p class = "js-p2"></p>
+                <img src = "" class = "js-image1">
+              </div>
+              <div class = "div3">
+                  <button class = "button-style1 js-button1 js-button2">Generate QR Code</button>
+              </div>
+          </div>
+        </div>
+       <script>
+          let input1 = document.querySelector('.js-input1');
+          let inputVal1 = input1.value;
+          let image1 = document.querySelector('.js-image1');
+          let div1 = document.querySelector('.div1');
+          let button2 = document.querySelector('.js-button2');
+          let p2 = document.querySelector('.js-p2')
+          document.querySelector('.js-button1').addEventListener('click', () => {
+            if (inputVal1.length > 0) {
+                button2.style = 'position: relative; top: 0px;';
+                div1.style = 'height: 300px;';
+                image1.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + inputVal1;
+            }
+            else {
+                p2.style = 'display: flex; align-items: center; justify-content: center; margin-top: 0px; margin-bottom: 0px; color: red;';
+                p2.innerHTML = 'Enter a text or url';
+                div1.style = 'height: 170px;';
+                input1.classList.add('ani');
+                setTimeout(() => {
+                   input1.classList.remove('ani');
+                },100)
+            }
+          })
+       </script>
+    </body>
+</html>
